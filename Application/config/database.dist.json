@@ -1,0 +1,6 @@
+{
+  "user": "YOUR_SQL_USERNAME",
+  "password": "YOUR_SQL_PASSWORD",
+  "database": "YOUR_SQL_DATABASE",
+  "host": "YOUR_SQL_HOST"
+}
