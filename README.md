@@ -9,10 +9,10 @@
 
 ### :cyclone: LAUNCH
 
-1. If it's the first time that you're running this project, go to the root of the repository with your terminal and run the following command:
+1. If it's the first time that you're running this project, go to the *Application* folder, at the root of the repository, with your terminal and run the following command:
         ```npm install```
 
-2. Go to the *Application* folder with your terminal and run the following command:
+2. Go to the *Application* folder, at the root of the repository, with your terminal and run the following command:
         ```npm run dev```
 
 *No needs to create the database on your mysql server, if it does'nt exists, it'll be created while runing the app*
