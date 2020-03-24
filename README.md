@@ -18,7 +18,7 @@
 
 **[BACK]**
 
-- Développer des composants dans le langage d'une base de données, back-end, multi-couche, composant métier **:two:**
+- Développer des composants dans le langage d'une base de données, back-end, multi-couche, composant métier :two:
   - Node, Express, MySQL
 - Préparer et exécuter les plans de tests d'une application **:two:**
   - utilisation de Postman
@@ -63,6 +63,7 @@
 ## :star2: TEAM
 
 :email: cabanes.thibault@gmail.com
+
 :email: lilian.mahut@pm.me
 
 ---
