@@ -1,5 +1,22 @@
 # Simplon's Skills Farming
 
+## QUICK-INSTALL
+
+### :zap: INSTALL
+
+1. Clone this repository.
+2. In Application/config, copy database.dist.json to database.json, fill with the correct values
+
+### :cyclone: LAUNCH
+
+1. If it's the first time that you're running this project, go to the root of the repository with your terminal and run the following command:
+        ```npm install```
+
+2. Go to the *Application* folder with your terminal and run the following command:
+        ```npm run dev```
+
+*No needs to create the database on your mysql server, if it does'nt exists, it'll be created while runing the app*
+
 :point_right: Vous pouvez retrouver la [dernière maquette Figma ici](https://www.figma.com/file/sxHkQE8ntzhyIBLPfE2IU5/skills-tree).
 
 :mag_right: **Description de l'application**
