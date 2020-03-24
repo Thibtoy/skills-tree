@@ -1,5 +1,14 @@
 # Simplon's Skills Farming
 
+:point_right: Vous pouvez retrouver la [dernière maquette Figma ici](https://www.figma.com/file/sxHkQE8ntzhyIBLPfE2IU5/skills-tree).
+
+:mag_right: **Description de l'application**
+
+> L'arbre de talent a pour but de centraliser tous les modules ainsi que toutes les compétences du référentiel CDA.
+> Chaque apprenant doit pouvoir situer son niveau par rapport aux différentes compétences du référentiel.
+> Chaque apprenant doit pouvoir se situer par rapport au niveau global de la promotion.
+
+
 ## QUICK-INSTALL
 
 ### :zap: INSTALL
@@ -16,14 +25,6 @@
         ```npm run dev```
 
 *No needs to create the database on your mysql server, if it does'nt exists, it'll be created while runing the app*
-
-:point_right: Vous pouvez retrouver la [dernière maquette Figma ici](https://www.figma.com/file/sxHkQE8ntzhyIBLPfE2IU5/skills-tree).
-
-:mag_right: **Description de l'application**
-
-> L'arbre de talent a pour but de centraliser tous les modules ainsi que toutes les compétences du référentiel CDA.
-> Chaque apprenant doit pouvoir situer son niveau par rapport aux différentes compétences du référentiel.
-> Chaque apprenant doit pouvoir se situer par rapport au niveau global de la promotion.
 
 ## TODO-LIST
 
