@@ -11,13 +11,13 @@ Chaque apprenant doit pouvoir se situer par rapport au niveau global de la promo
 
 ## TODO-LIST
 
-### :red_book: TODO
+:closed_book: ### TODO
 
-### :orange_book: DOING
+:orange_book: ###DOING
 
 ### :green_book: DONE
 
-## ENTITIES
+## ENTITIES :scroll:
 
 ## :star2: TEAM
 
