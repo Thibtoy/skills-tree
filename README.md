@@ -11,14 +11,16 @@ Chaque apprenant doit pouvoir se situer par rapport au niveau global de la promo
 
 ## TODO-LIST
 
-:red_book: ### TODO
+### :red_book: TODO
 
-:orange_book: ### DOING
+### :orange_book: DOING
 
-:green_book: ### DONE
+### :green_book: DONE
 
 ## ENTITIES
 
-:star2: ## TEAM
+## :star2: TEAM
+
 :email: thibaultcabannes@gmail.com
+
 :email: lilian.mahut@pm.me
