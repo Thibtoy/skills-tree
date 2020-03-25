@@ -14,12 +14,12 @@ export default function databaseInitialisation() {
 		}
 		console.info('Database successfully created, creating table')
 
-		let migrations = fs.readdirSync('./api/migrations')
+		let migrations = fs.readdirSync('./api/_migrations')
 		connection = database.connect()
 
 		for (let i = 0, l = migrations.length; i < l; i++) {
 			let migration = migrations[i]
-			let sql = fs.readFileSync(`./api/migrations/${migration}`).toString()
+			let sql = fs.readFileSync(`./api/_migrations/${migration}`).toString()
 
 			console.info(`creating ${migration.split('.')[0]} table`)
 
@@ -38,6 +38,6 @@ export default function databaseInitialisation() {
 		}
 
 		connection.end()
-		console.info('Tables successfully created, your database is ready to use!')
+		console.info('Tables successfully created, your database is ready to use')
 	})
 }
