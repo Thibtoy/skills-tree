@@ -1,13 +1,18 @@
-# Simplon's Skills Farming
+<p align="center">
+  <img alt="Simplon's Skills Farming" src="/conception/pictures/logo.png" />
+</p>
+<h1 align="center">
+  Simplon's Skills Farming
+</h1>
 
-:point_right: Vous pouvez retrouver la [dernière maquette Figma ici](https://www.figma.com/file/sxHkQE8ntzhyIBLPfE2IU5/skills-tree).
+:point_right: You can find [last Figma's model here](https://www.figma.com/file/sxHkQE8ntzhyIBLPfE2IU5/skills-tree).
 
-:mag_right: **Description de l'application**
+### :dart: **Application's purpose**
 
 > L'arbre de talent a pour but de centraliser tous les modules ainsi que toutes les compétences du référentiel CDA.
 > Chaque apprenant doit pouvoir situer son niveau par rapport aux différentes compétences du référentiel et par rapport au niveau global de la promotion.
 
-##🚀 Get Up and Running in 5 Minutes
+## 🚀 Get Up and Running in 5 Minutes
 
 ## TODO-LIST
 
@@ -57,7 +62,7 @@
 | EMAIL      | NAME        | NAME        | NAME        | FARMER_ID             | FARMER_ID           |
 | FIRST_NAME | DESCRIPTION | DESCRIPTION | DESCRIPTION | SKILL_ID              | SKILL_ID            |
 | LAST_NAME  |             | THEME_ID    |             | LEVEL_ID              | TIP_NAME            |
-| PASWWORD   |             |             |             |                       | TIP_CONTENT         |
+| PASSWORD   |             |             |             |                       | TIP_CONTENT         |
 
 ---
 
