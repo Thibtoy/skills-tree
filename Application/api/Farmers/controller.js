@@ -1,5 +1,4 @@
 import FarmerServices from './service';
-import {database} from '../../setup/database';
 
 const FarmerController = {
     register : (req, res) => {
