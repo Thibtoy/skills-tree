@@ -1,7 +1,7 @@
 import express from "express"
+import apiRouter from "../api/router"
 
 const Router = (server) => {
-    var apiRoutes = express.Router()
 
     // Home route. We'll end up changing this to our main front end index later.
     server.get('/', function (req, res) {
@@ -9,7 +9,7 @@ const Router = (server) => {
     });
 
     //Project router
-    server.use('/api', apiRoutes)
+    server.use('/api', apiRouter)
 
     // server.use('/api/project', projectRoutes);
     // server.use('/api/pages', pagesRoutes);
