@@ -16,15 +16,15 @@ CREATE TABLE `levels` (
 
 CREATE TABLE `themes` ( 
 	`id` INT NOT NULL AUTO_INCREMENT,
-	`name` VARCHAR(75) NOT NULL,
-	`description` VARCHAR(255) NOT NULL,
+	`name` VARCHAR(255) NOT NULL,
+	`description` LONGTEXT NOT NULL,
 	 PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
 
 CREATE TABLE `skills` ( 
 	`id` INT NOT NULL AUTO_INCREMENT, 
-	`name` VARCHAR(75) NOT NULL, 
-	`description` VARCHAR(255) NOT NULL, 
+	`name` VARCHAR(255) NOT NULL, 
+	`description` LONGTEXT NOT NULL, 
 	`theme_id` INT NOT NULL, 
 	 PRIMARY KEY (`id`) 
 ) ENGINE = InnoDB;
@@ -62,7 +62,7 @@ CREATE TABLE `farmers_skills_tips` (
 	`farmer_id` INT NOT NULL,
     `skill_id` INT NOT NULL,
     `tip_name` VARCHAR(255) NOT NULL,
-    `tip_content` VARCHAR(255) NOT NULL,
+    `tip_content` LONGTEXT NOT NULL,
 	 PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
 
