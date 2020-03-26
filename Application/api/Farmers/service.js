@@ -2,6 +2,8 @@ import FarmerQueries from "./query"
 import bcrypt from 'bcrypt';
 import config from '../../config/server';
 import jwt from 'jsonwebtoken';
+import SkillQueries from '../Skills/query'
+import FarmersSkillsLevelsQueries from '../FarmersSkillsLevels/query'
 
 const FarmerServices = {
     register: body => {
@@ -14,7 +16,18 @@ const FarmerServices = {
     		bcrypt.genSalt()
     			.then(salt => bcrypt.hash(password, salt))
     			.then(hashedPassword => FarmerQueries.register({email, firstName, lastName, password: hashedPassword}))
-    			.then(message => resolve({status: 201, payload: { success: true, message}}))
+    			.then(data => {
+                    SkillQueries.getAllSkills()
+                        .then(skills => {
+                            skills.forEach(skill => {
+                                FarmersSkillsLevelsQueries.createFarmerSkillLevel(data.insertId, skill.id)
+                                    .then(() => resolve({status: 201, payload: { success: true, message: 'Farmer successfully created'}}))
+                                    .catch(err => reject({ status: 400, payload: {success: false, message: err}}))
+                            })
+                        })
+                        .catch(err => reject({ status: 400, payload: {success: false, message: err}}))
+                    resolve({status: 201, payload: { success: true, message: 'Farmer successfully created'}})
+                })
     			.catch(err => reject({ status: 400, payload: {success: false, message: err}}))
     	});
     },
