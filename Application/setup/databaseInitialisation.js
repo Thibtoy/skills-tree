@@ -4,40 +4,45 @@ import fs from 'fs'
 export default function databaseInitialisation() {
 	let connection = noDatabase.connect()
 
-	console.info('Creating database if not exists')
+	console.info('Creating database')
 
-	connection.query(`CREATE DATABASE ${databaseName}`, async err => {
-		connection.end()
-		if (err) {
-			if (err.errno === 1007) return console.info('Database already exists and is ready to use')
-			else throw err
-		}
-		console.info('Database successfully created, creating table')
+	connection.query(`DROP DATABASE IF EXISTS ${databaseName}`, err => {
+		if (err) throw err
+		connection.query(`CREATE DATABASE ${databaseName}`, async err => {
+			connection.end()
+			if (err) throw err
 
-		let migrations = fs.readdirSync('./api/_migrations')
-		connection = database.connect()
+			console.info('Database successfully created, executing migartions')
 
-		for (let i = 0, l = migrations.length; i < l; i++) {
-			let migration = migrations[i]
-			let sql = fs.readFileSync(`./api/_migrations/${migration}`).toString()
+			let migrations = fs.readdirSync('./api/_migrations')
+			connection = database.connect()
 
-			console.info(`creating ${migration.split('.')[0]} table`)
+			for (let i = 0, l = migrations.length; i < l; i++) {
+				let migration = migrations[i]
+				let sqls = fs.readFileSync(`./api/_migrations/${migration}`).toString().split(';')
 
-			await new Promise ((resolve, reject) => {
-				connection.query(sql, (err) => {
-					if (err) reject(err)
-					else resolve()
+
+				console.info(`executing migration n° ${migration.split('.')[0]}`)
+
+				await sqls.forEach(async (sql, i) => {
+					await new Promise ((resolve, reject) => {
+						if (i === (sqls.length - 1)) resolve(true)
+						connection.query(sql, (err) => {
+							if (err) reject(err)
+							else resolve()
+						})
+					})
+					.then((end) => {
+						if (end) console.info(`migration n° ${migration.split('.')[0]} successfully done`)
+					})
+					.catch(err => {
+						console.error(err)
+					})
 				})
-			})
-			.then(() => {
-				console.info(`table ${migration.split('.')[0]} successfully created`)
-			})
-			.catch(err => {
-				throw err
-			})
-		}
+			}
+			connection.end()
 
-		connection.end()
-		console.info('Tables successfully created, your database is ready to use')
+			console.info('Your database is ready to use!')
+		})
 	})
 }
