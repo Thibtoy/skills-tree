@@ -5,6 +5,7 @@ import SkillController from "./controller"
 const router = express.Router()
 
 router.get('/', SkillController.skills)
+router.get('/themes', SkillController.allSkillsByThemes)
 router.get('/:id', SkillController.skill)
 router.get('/themes/:id', SkillController.skillsByTheme)
 

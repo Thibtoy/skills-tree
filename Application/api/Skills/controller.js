@@ -15,6 +15,11 @@ const SkillController = {
         SkillServices.getSkillsByTheme(req.params.id)
             .then(response => {res.status(response.status).send(response)})
             .catch( err => res.status(err.status).send(err))
+    },
+    allSkillsByThemes : (req, res) => {
+        SkillServices.getAllSkillsByThemes()
+            .then(response => {res.status(response.status).send(response)})
+            .catch( err => res.status(err.status).send(err))
     }
 }
 

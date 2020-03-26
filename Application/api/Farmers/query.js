@@ -12,7 +12,7 @@ const Query = {
                     console.log(err)
                     (err.sqlState === '23000')? reject('Farmer already exist') : reject('Something went wrong')
                 }
-                else resolve('Farmer successfully registered');
+                else resolve(data);
             });
         });
     },
