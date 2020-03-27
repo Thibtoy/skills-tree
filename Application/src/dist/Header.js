@@ -45,9 +45,14 @@ export default class Header extends Component {
 		logBtn.addEventListener('click', this.showLogModale)
 		let logImg = document.createElement('img')
 		logImg.id = 'LogImg'
-		logImg.src = './dist/assets/images/loggedOut.svg'
 		logBtn.appendChild(logImg)
 		this.element.appendChild(logBtn)
+		fetch('http://localhost:8000/api/farmer/isAuth')
+			.then(data => data.json())
+			.then(data => {
+				logImg.src = (!data.payload.success)? 
+					'./dist/assets/images/loggedOut.svg' : './dist/assets/images/loggedIn.svg'
+			})
 	}
 
 	showLogModale = () => {

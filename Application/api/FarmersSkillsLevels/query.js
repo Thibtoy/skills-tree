@@ -33,7 +33,7 @@ const Query = {
     },
     createFarmerSkillLevel: (farmerId, skillId) => {
         return new Promise((resolve, reject) => {
-            let q = `INSERT INTO farmers_skills_levels (farmer_id, skill_id, level_id) VALUES (${farmerId}, ${skillId}, 1)`
+            let q = `INSERT INTO farmers_skills_levels (farmer_id, skill_id, level_id) VALUES (${farmerId}, ${skillId}, 2)`
             let connection = database.connect()
             connection.query(q, (err, data) => {
                 connection.end()

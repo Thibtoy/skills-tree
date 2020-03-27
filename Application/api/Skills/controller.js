@@ -20,23 +20,22 @@ const SkillController = {
     },
     allSkillsByThemes : (req, res) => {
         let token = req.cookies.token
-        FarmerServices.isAuth(token)
-            .then((data) => {
-                let farmerId = data.payload.id
-                FarmersSkillsLevelsServices.getAllSkillsWithLevelsByThemes(farmerId)
-                    .then(response => {
-                        console.log(response)
-                        res.status(response.status).send(response)})
-                    .catch( err => {
-                        console.log(err)
-                        res.status(err.status).send(err)})
-            })
-            .catch((err) => {
-                console.log(err)
-                SkillServices.getAllSkillsByThemes()
-                    .then(response => res.status(response.status).send(response))
-                    .catch( err => res.status(err.status).send(err))
-            })
+        new Promise ((resolve, reject) => {
+            FarmerServices.isAuth(token)
+                .then((data) => {
+                    let farmerId = data.payload.id
+                    FarmersSkillsLevelsServices.getAllSkillsWithLevelsByThemes(farmerId)
+                        .then(response => resolve(response))  
+                        .catch(err => reject(err))
+                })
+                .catch(err => reject(err))
+        })
+        .then(response => res.status(response.status).send(response))
+        .catch((err) => {
+            SkillServices.getAllSkillsByThemes()
+                .then(response => res.status(response.status).send(response))
+                .catch( err => res.status(err.status).send(err))
+        })
     }
 }
 
