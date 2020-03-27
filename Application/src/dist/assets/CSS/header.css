@@ -1,0 +1,28 @@
+#Header {
+	width: 100%;
+	background-color: rgba(255, 255, 255, 0.65);
+	position: fixed;
+	top: 0px;
+	border-bottom: 1.25px solid rgba(0, 0, 0, 0.3);
+}
+
+#LogBtn {
+	position: absolute;
+	right: 10px;
+	box-sizing: border-box;
+	background-color: white;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	padding: 5px;
+	border: 0.5px solid rgba(0, 0, 0, 0.3);
+}
+
+#LogBtn:hover {
+	cursor: pointer;
+}
+
+#LogImg {
+	width: 30px;
+	height: 30px;
+}

@@ -1,0 +1,22 @@
+.Modale {
+	display: none;
+	position: fixed;
+	left: calc(50% - 175px);
+	top: 50%;
+	width: 350px;
+	min-height: 230px;
+	background-color: rgba(255, 255, 255, 0.9);
+	border: 0.75px solid rgba(0, 0, 0, 0.4);
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-radius: 5px;
+}
+
+.ModaleVisible {
+	display: flex;
+}
+
+.ModaleMessage {
+	text-align: center;
+}
