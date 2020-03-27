@@ -2,7 +2,6 @@ export default class Component {
 	constructor() {
 		this.refs = new Object()
 	}
-
 	setState() {
 		let state;
 		try {
@@ -24,11 +23,10 @@ export default class Component {
 			console.error(e);
 		}
 	}
-
+  
 	setReference(key, element) {
 		this.refs[key] = element
 	}
-
 	append() {
 		this.element.setAttribute('key', Date.now());
 		if (this.style) {
