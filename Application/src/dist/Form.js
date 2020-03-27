@@ -10,6 +10,7 @@ export default class Form extends Component{
 			method,
 			action,
 			class: (typeof className === 'string')? [className] : className
+
 		}
 		this.url = (url)? url : '#';
 		this.inputList = inputList;
