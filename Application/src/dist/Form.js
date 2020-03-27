@@ -2,13 +2,15 @@ import Component from './Yggdrasil/Component.js';
 
 export default class Form extends Component{
 	constructor(params = new Object(), inputList = new Array(), buttonMessage = 'Ok', handleSubmit = false, handleData = false) {
-		let {id, url, method, action, classList} = params;
+		let {id, url, method, action, className, style} = params;
 		super();
+		if (style) this.style = style
 		this.attributes = {
 			id,
 			method,
 			action,
-			class: (typeof classList === 'string')? [classList] : classList
+			class: (typeof className === 'string')? [className] : className
+
 		}
 		this.url = (url)? url : '#';
 		this.inputList = inputList;

@@ -1,0 +1,7 @@
+#Home {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: flex-start;
+	padding: 85px 0 25px 0;
+	box-sizing: border-box;
+}

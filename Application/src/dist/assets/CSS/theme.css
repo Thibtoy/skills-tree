@@ -1,0 +1,25 @@
+.Theme{
+	display: flex;
+	padding: 10px 0px 15px 45px;
+	box-sizing: border-box;
+	background-image: url(../images/sign.png);
+	background-size: cover;
+	width: 349px;
+	height: 170px;
+	margin-bottom: 10px;
+}
+
+.ThemeDescription{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 230px;
+	text-align: center;
+
+}
+
+.SkillsListBtn{
+	width: 25px;
+	height: 25px;
+	align-self: flex-end;
+}

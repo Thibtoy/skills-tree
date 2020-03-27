@@ -1,10 +1,11 @@
 import Component from './Yggdrasil/Component.js';
 
 export default class SkillBox extends Component{
-	constructor() {
+	constructor(skill) {
 		super()
 		this.style = './dist/assets/CSS/skillBox.css'
 		this.element = document.createElement('div')
+		this.state = skill
 		this.render()
 	}
 
@@ -13,7 +14,7 @@ export default class SkillBox extends Component{
 		let row1 = document.createElement('div'),
 			row2 = document.createElement('div'),
 			skillBoard = document.createElement('div'),
-			skillDescription = document.createElement('p'),
+			skillName = document.createElement('p'),
 			skillLevel = document.createElement('div'),
 			skillLink = document.createElement('p'),
 			levelImg = document.createElement('img')
@@ -21,13 +22,13 @@ export default class SkillBox extends Component{
 		row2.className = 'SkillRow2'
 		skillBoard.className = 'SkillBoard'
 		skillLevel.className = 'SkillLevel'
-		skillDescription.className = 'SkillDescription'
+		skillName.className = 'SkillName'
 		skillLink.className = 'SkillLink'
 		levelImg.className = 'LevelImg'
-		levelImg.src = './dist/assets/images/tree0.png'
-		skillDescription.innerHTML = 'yugqouesghgisifhobihuuouo uuhsiovhouh bougbou oushoubou buorboubou bzruobou bzruoboubousf kh bsf khb sb fjb sfjlb sfjb f sjb'
+		levelImg.src = `./dist/assets/images/${(this.state.image)? this.state.image : 'tree0'}.png`
+		skillName.innerHTML = this.state.name
 		skillLink.innerHTML = 'Voir Plus'
-		skillBoard.appendChild(skillDescription)
+		skillBoard.appendChild(skillName)
 		skillLevel.appendChild(levelImg)
 		row1.appendChild(skillBoard)
 		row1.appendChild(skillLevel)

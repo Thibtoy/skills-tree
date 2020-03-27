@@ -1,31 +1,48 @@
 import Component from './Yggdrasil/Component.js'
+import LoginForm from './LoginForm.js'
+import RegisterForm from './RegisterForm.js'
 
 export default class Header extends Component {
-	constructor(ref) {
+	constructor() {
 		super()
-		this.ref = ref
 		this.state = {
-			currentPage: this.routerCallback()
+			currentPage: this.routerCallback(),
+			showingModale: false
 		}
 		this.style = './dist/assets/CSS/header.css'
 		this.element = document.createElement('div')
 		this.routerCallback = this.routerCallback.bind(this)
-		this.test = this.test.bind(this)
+		this.showLogModale = this.showLogModale.bind(this)
+		this.switchForm = this.switchForm.bind(this)
+		this.loginForm = new LoginForm()
+		this.registerForm = new RegisterForm()
+		this.formMessage = document.createElement('p')
+		this.formMessageSpan = document.createElement('span')
 		this.render()
 	}
 
 	render() { 
 		this.element.id = 'Header'
-		this.element.style.width = '100vw'
 		this.element.style.height = '60px'
 		this.element.style.display = 'flex'
 		this.element.style.alignItems = 'center'
 		this.element.style.justifyContent = 'center'
 		this.element.innerHTML = 'Simplon\'s Skills Farm'
 
+		this.loginFormElem = document.createElement('div')
+		this.loginFormElem.id = 'LoginForm'
+		this.formMessage.innerHTML = 'Pas encore membre? '
+		this.formMessageSpan.innerHTML = 'Inscrivez vous!'
+		this.formMessageSpan.addEventListener('click', this.switchForm)
+		this.formMessage.appendChild(this.formMessageSpan)
+		this.loginFormElem.appendChild(this.loginForm.append())
+		this.loginFormElem.appendChild(this.formMessage)
+		this.registerFormElem = this.registerForm.append()
+		this.registerFormElem.id = 'RegisterForm'
+
 		let logBtn = document.createElement('div')
 		logBtn.id = 'LogBtn'
-		logBtn.addEventListener('click', this.test)
+		logBtn.addEventListener('click', this.showLogModale)
 		let logImg = document.createElement('img')
 		logImg.id = 'LogImg'
 		logImg.src = './dist/assets/images/loggedOut.svg'
@@ -33,8 +50,25 @@ export default class Header extends Component {
 		this.element.appendChild(logBtn)
 	}
 
-	test = (e) => {
-		this.ref.page.LoginForm.inputList[0].element.value = 'thibault'
+	showLogModale = () => {
+		if (!this.state.showingModale) {
+			this.refs.modale.setState({
+				message: 'Connectez-vous pour profiter pleinement des fonctionnalités', 
+				formBoxChild: this.loginFormElem, 
+				visible: true
+			})
+		}
+		else
+			this.refs.modale.setState({message: '', visible: false})
+		this.state.showingModale = (this.state.showingModale)? false : true
+	}
+
+	switchForm = () => {
+		this.refs.modale.setState({
+			message: 'Inscrivez vous', 
+			formBoxChild: this.registerFormElem, 
+			visible: true
+		})
 	}
 
 	routerCallback(event) {

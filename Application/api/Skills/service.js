@@ -43,7 +43,6 @@ const SkillServices = {
                 .catch(err => reject({ status: 400, payload: {success: false, message: err}}))
         })
     }
-
 }
 
 export default SkillServices

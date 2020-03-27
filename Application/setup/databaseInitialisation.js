@@ -42,7 +42,7 @@ export default function databaseInitialisation() {
 			}
 			connection.end()
 
-			console.info('Your database is ready to use')
+			console.info('Your database is ready to use!')
 		})
 	})
 }

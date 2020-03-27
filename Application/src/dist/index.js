@@ -1,6 +1,6 @@
 import Header from './Header.js';
 import Home from './Home.js';
-// import RegisterForm from './RegisterForm.js';
+import Modale from './Modale.js';
 import Yggdrasil from './Yggdrasil/Yggdrasil.js';
 
 class App extends Yggdrasil{
@@ -17,14 +17,18 @@ class App extends Yggdrasil{
 }
 
 const app = new App();
-app.use({
-			header: new Header(app.currentPage),
-			pages: [
-				{
-					name: 'Home', 
-					path: '/', 
-					content: new Home(),
-				}
-			],
-			//ancre: app.ancre,
-		});
+let appTree = {
+	header: new Header(),
+	modale: new Modale(),
+	pages: [
+		{
+			name: 'Home', 
+			path: '/', 
+			content: new Home(),
+		}
+	],
+}
+
+appTree.header.setReference('modale', appTree.modale)
+
+app.use(appTree);

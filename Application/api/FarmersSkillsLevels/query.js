@@ -18,12 +18,11 @@ const Query = {
     },
     getFarmerSkillsLevelsByTheme: (farmerId, themeId) => {
         return new Promise(function(resolve, reject) {
-            let q = `SELECT skills.name, levels.name AS level, levels.description FROM farmers_skills_levels AS fsl `+
+            let q = `SELECT skills.name, levels.name AS level, levels.description , levels.image FROM farmers_skills_levels AS fsl `+
                 `INNER JOIN skills ON skills.id = fsl.skill_id `+
                 `INNER JOIN levels ON levels.id = fsl.level_id `+
                 `WHERE skills.theme_id = ${themeId} AND fsl.farmer_id = ${farmerId};`
             let connection = database.connect()
-            console.log(q)
             connection.query(q, (err, data) => {
                 connection.end()
                 if (err) reject(err)
