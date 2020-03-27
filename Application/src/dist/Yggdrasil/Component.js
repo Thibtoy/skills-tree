@@ -1,4 +1,8 @@
 export default class Component {
+	constructor() {
+		this.refs = new Object()
+	}
+
 	setState() {
 		let state;
 		try {
@@ -19,6 +23,10 @@ export default class Component {
 		catch (e) {
 			console.error(e);
 		}
+	}
+
+	setReference(key, element) {
+		this.refs[key] = element
 	}
 
 	append() {

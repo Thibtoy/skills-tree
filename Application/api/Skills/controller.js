@@ -1,4 +1,6 @@
 import SkillServices from './service'
+import FarmerServices from '../Farmers/service'
+import FarmersSkillsLevelsServices from '../FarmersSkillsLevels/service'
 
 const SkillController = {
     skills : (req, res) => {
@@ -17,9 +19,24 @@ const SkillController = {
             .catch( err => res.status(err.status).send(err))
     },
     allSkillsByThemes : (req, res) => {
-        SkillServices.getAllSkillsByThemes()
-            .then(response => {res.status(response.status).send(response)})
-            .catch( err => res.status(err.status).send(err))
+        let token = req.cookies.token
+        FarmerServices.isAuth(token)
+            .then((data) => {
+                let farmerId = data.payload.id
+                FarmersSkillsLevelsServices.getAllSkillsWithLevelsByThemes(farmerId)
+                    .then(response => {
+                        console.log(response)
+                        res.status(response.status).send(response)})
+                    .catch( err => {
+                        console.log(err)
+                        res.status(err.status).send(err)})
+            })
+            .catch((err) => {
+                console.log(err)
+                SkillServices.getAllSkillsByThemes()
+                    .then(response => res.status(response.status).send(response))
+                    .catch( err => res.status(err.status).send(err))
+            })
     }
 }
 

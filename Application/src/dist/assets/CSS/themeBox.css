@@ -1,0 +1,14 @@
+.ThemeBox, .SkillsList {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.SkillsList {
+	display: none;
+}
+
+.SkillsListVisible {
+	display: flex;
+}

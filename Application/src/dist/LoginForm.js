@@ -4,16 +4,22 @@ import Input from './Input.js';
 export default class LoginForm {
 	constructor() {
 		const inputs = [
-			new Input({type: 'text', name: 'username', required: true, placeholder: 'Username'}),
+			new Input({type: 'email', name: 'email', required: true, placeholder: 'Email'}),
 			new Input({type: 'password', name: 'password', required: true, placeholder: 'Password'})
 		]
 
 		return new Form(
 			{
-				url: 'http://localhost:8000/api/user/authenticate',
+				style: './dist/assets/CSS/loginForm.css',
+				className: 'LoginForm',
+				url: 'http://localhost:8000/api/farmer/authenticate',
 			}, 
 			inputs, 
-			'Login'
+			'Login',
+			false,
+			data => {
+				if (data) window.location.reload()
+			}
 		);
 	}
 }

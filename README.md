@@ -24,6 +24,8 @@
 2. Go to the *Application* folder, at the root of the repository, with your terminal and run the following command:
         ```npm run dev```
 
+3. You can now go on 'http://localhost:8000' to access the home page, with the button at the right top of the screen, you can make a modale appear and connect with demo user : email -> 'test@test.com' password -> 'coucou' or register a new user.
+
 *No needs to create the database on your mysql server, if it does'nt exists, it'll be created while runing the app*
 
 ## TODO-LIST

@@ -1,26 +1,28 @@
 import Component from './Yggdrasil/Component.js';
-import SkillBox from './SkillBox.js';
-let data = [
-	'yugqouesghgisifhobihuuouo uuhsiovhouh bougbou oushoubou buorboubou bzruobou bzruoboubousf kh bsf khb sb fjb sfjlb sfjb f sjb',
-	'yugqouesghgisifhobihuuouo uuhsiovhouh bougbou oushoubou buorboubou bzruobou bzruoboubousf kh bsf khb sb fjb sfjlb sfjb f sjb',
-	'yugqouesghgisifhobihuuouo uuhsiovhouh bougbou oushoubou buorboubou bzruobou bzruoboubousf kh bsf khb sb fjb sfjlb sfjb f sjb',
-	'yugqouesghgisifhobihuuouo uuhsiovhouh bougbou oushoubou buorboubou bzruobou bzruoboubousf kh bsf khb sb fjb sfjlb sfjb f sjb',
-	'yugqouesghgisifhobihuuouo uuhsiovhouh bougbou oushoubou buorboubou bzruobou bzruoboubousf kh bsf khb sb fjb sfjlb sfjb f sjb'
-]
+import ThemeBox from './ThemeBox.js';
+
 export default class Home extends Component{
 	constructor() {
 		super()
+		this.style = './dist/assets/CSS/home.css'
 		this.element = document.createElement('div')
 		this.element.id = 'Home'
+		this.themeBoxes = []
 		this.build()
 	}
 
 	build = () => {
-		this.skillsBox = []
-		data.forEach(skill => {
-			let skillBox = new SkillBox()
-			this.skillsBox.push(skillBox)
-			this.element.appendChild(skillBox.append())
-		}) 
+		let that = this
+		fetch('http://localhost:8000/api/skills/themes')
+			.then(data => data.json())
+			.then(data => {
+				console.log(data)
+				let themes = data.payload.themes
+				for (let i = 0, l = themes.length; i < l; i++) {
+					let themeBox = new ThemeBox(themes[i])
+					that.themeBoxes.push(themeBox)
+					that.element.appendChild(themeBox.append())
+				}
+			})
 	}
 }
