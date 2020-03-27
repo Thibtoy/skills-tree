@@ -9,6 +9,7 @@ export default class Modale extends Component{
 		this.formBox = document.createElement('div')
 		this.formBox.className = 'FormBox'
 		this.message = document.createElement('p')
+		this.message.className = 'ModaleMessage'
 		this.state = {
 			message: '',
 			formBoxChild: document.createElement('div'),
@@ -18,7 +19,6 @@ export default class Modale extends Component{
 	}
 
 	render = () => {		
-		this.message.className = 'ModaleMessage'
 		this.message.innerHTML = this.state.message
 		if (this.state.visible) this.element.classList.add('ModaleVisible')
 		else if (this.element.classList.contains('ModaleVisible')) this.element.classList.remove('ModaleVisible')

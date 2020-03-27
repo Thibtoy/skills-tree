@@ -12,10 +12,16 @@ export default class RegisterForm {
 
 		return new Form(
 			{
+				style: './dist/assets/CSS/registerForm.css',
+				className: 'RegisterForm',
 				url: 'http://localhost:8000/api/farmer/register',
 			}, 
 			inputs, 
-			'Register'
+			'Register',
+			false,
+			data => {
+				if (data) window.location.reload()
+			}
 		);
 	}
 }

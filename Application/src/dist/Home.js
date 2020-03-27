@@ -16,7 +16,6 @@ export default class Home extends Component{
 		fetch('http://localhost:8000/api/skills/themes')
 			.then(data => data.json())
 			.then(data => {
-				console.log(data)
 				let themes = data.payload.themes
 				for (let i = 0, l = themes.length; i < l; i++) {
 					let themeBox = new ThemeBox(themes[i])
