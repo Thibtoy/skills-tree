@@ -1,19 +1,33 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import api from '../utils/api'
+import styled from 'styled-components'
+import ThemeBox from './ThemeBox'
 
 const Home = (props) => {
+	const [themes, setThemes] = useState([])
 
-    const [padawans, setPadawans] = useState(['Alexandre', 'Thibault', 'Clémence', 'Elena', 'Jega', 'Julien', 'Lilian', 'Rim', 'Shelley'])
+	useEffect(() => {
+		api.get('/skills/themes')
+			.then(response => setThemes(response.data.payload.themes))
+	}, [])
 
-    // api
-    //     .get('/skills/')
-    //     .then(response => console.log(response))
+	useEffect(() => {
+		console.log(themes)
+	}, [themes])
 
     return (
-        <select>
-            {padawans.map(padawan => <option key={padawan}>{padawan}</option>)}
-        </select>
+        <Body>
+            { themes.map((theme, i) => <ThemeBox key={i} theme={theme} />) }
+        </Body>
     )
 }
+
+const Body = styled.div`
+	display: flex;
+	justify-content: space-evenly;
+	align-items: flex-start;
+	padding: 85px 0 25px 0;
+	box-sizing: border-box;
+`
 
 export default Home;

@@ -5,7 +5,7 @@ INSERT INTO `farmers_skills_levels` (farmer_id, level_id, skill_id)
 	VALUES
 	(1, 5, 1),
 	(1, 2, 2),
-	(1, 4, 2),
+	(1, 4, 3),
 	(1, 6, 4),
 	(1, 3, 5),
 	(1, 2, 6),
