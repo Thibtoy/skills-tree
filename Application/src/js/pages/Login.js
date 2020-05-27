@@ -1,69 +1,43 @@
 import React, { useState } from 'react'
 import api, { addAuth } from '../utils/api'
 import styled from 'styled-components'
-//import { setStorageUser } from '../utils/local-storage'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Login = (props) => {
+    const dispatch = useDispatch()
+    const { isLoading, error } = useSelector( state => state.auth )
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
-    const [message, setMessage] = useState(null);
-
-    const displayRegisterModale = () => props.setModale({ type: 'register', title: 'Register' })
+    const displayRegisterModale = () => dispatch({ type: 'TOGGLE_IS_MODAL_SHOWING', payload: { type: 'register', title: 'Register' } })
 
     const handleSubmit = (event) => {
-        event.preventDefault();
-
-        setMessage(null);
-        setIsLoading(true);
-
-        const body = {
-            email,
-            password,
-        }
-
-        api
-            .post('/farmer/authenticate', body)
-            .then(response => {
-            	console.log(response)
-                //addAuth(response.data.token)
-                //setStorageUser(response.data.data.user)
-                setMessage(response.data.message)
-            })
-            .catch(error => {
-                return setMessage(error.response.data.message);
-            })
-            .finally(() => {
-                setIsLoading(false);
-            })
+        event.preventDefault()
+        dispatch({ type: 'CONNECTING_AUTH_USER', payload: { email, password } })
+        setPassword('')
     }
 
     return (
         <LoginBox>
-            {
-                isLoading
-                    ? <span>is loading</span>
-                    : <form onSubmit={handleSubmit}>
-                        <div className="">
-                            <label>Email :</label>
-                            <input onChange={(event) => setEmail(event.target.value)} type="email" name='email' required />
-                        </div>
-                        <div className="">
-                            <label>Password :</label>
-                            <input onChange={(event) => setPassword(event.target.value)} type="password" required />
-                        </div>
-                        <br />
-                        <Button type="submit">Sign In</Button>
-                        <p>Not member yet? <span onClick={ displayRegisterModale }>Sign Up</span></p>
-                        <p>Forgoted password? <a href='#'>Click Here</a></p>
-                        {message && <span>{message}</span>}
-                    </form>
-            }
+            <form onSubmit={handleSubmit}>
+                <div className="">
+                    <label>Email :</label>
+                    <input onChange={(event) => setEmail(event.target.value)} value={ email } type="email" name='email' required />
+                </div>
+                <div className="">
+                    <label>Password :</label>
+                    <input onChange={(event) => setPassword(event.target.value)} value={ password } type="password" required />
+                </div>
+                <br />
+                <Button type="submit">Sign In</Button>
+                <p>Not member yet? <span onClick={ displayRegisterModale }>Sign Up</span></p>
+                <p>Forgoted password? <a href='#'>Click Here</a></p>
+                { error && <span>{ error }</span> }
+            </form>
         </LoginBox>
     )
 }
-
+//
 const LoginBox = styled.div`
 	display: flex;
 	justify-content: center;
@@ -90,6 +64,12 @@ const LoginBox = styled.div`
 		p {
 			margin-top: 12px;
 			font-size: 14px;
+
+            span {
+                color: #e39c19;
+                text-decoration: underline;
+                cursor: pointer;
+            }
 		}
 	}
 `

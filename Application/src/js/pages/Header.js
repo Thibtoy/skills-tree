@@ -1,12 +1,13 @@
 import React from 'react'
-
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { useDispatch } from 'react-redux'
 
 import loggedOut from '../../images/loggedOut.svg'
 
 const Header = (props) => {
-	const showModale = () => props.setModale({ type: 'login', title: 'Login' })
+	const dispatch = useDispatch()
+	const showModal = () => dispatch({ type: 'TOGGLE_IS_MODAL_SHOWING', payload: { type: 'login', title: 'Login' } })
 
     return (
         <AppHeader>
@@ -21,7 +22,7 @@ const Header = (props) => {
                     </li>*/}
                 </ul>
             </Nav>
-            <LogBtn onClick={ showModale }>
+            <LogBtn onClick={ showModal }>
         		<img src={loggedOut} />
         	</LogBtn>
         </AppHeader>

@@ -2,17 +2,20 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import Login from './Login'
 import Register from './Register'
+import { useSelector } from 'react-redux'
 
 const Modale = (props) => {
+	const modal = useSelector(state => state.tree.isModalShowing)
+
 	return (
 		<ModaleOut id='OutsideModale' onClick={ props.clickOutside }>
 			<ModaleBox>
-				{ props.modale.title && 
-					<h2>{ props.modale.title }</h2>
+				{ modal.title && 
+					<h2>{ modal.title }</h2>
 				}
 				<ModaleContent>
-					{ props.modale.type === 'login' && <Login setModale={ props.setModale }/> }
-					{ props.modale.type === 'register' && <Register setModale={ props.setModale }/> }
+					{ modal.type === 'login' && <Login /> }
+					{ modal.type === 'register' && <Register /> }
 				</ModaleContent>
 			</ModaleBox>
 		</ModaleOut>

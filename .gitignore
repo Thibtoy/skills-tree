@@ -1,0 +1,4 @@
+/Application/node_modules
+/Application/config/database.json
+/Application/package-lock.json
+/Application/dist

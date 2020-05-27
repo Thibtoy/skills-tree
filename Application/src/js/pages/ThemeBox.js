@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import SkillBox from './SkillBox'
 import styled from 'styled-components'
 import sign from '../../images/sign.png'
 import play from '../../images/play.svg'
 
 const ThemeBox = (props) => {
-	const [visible, setVisible] = useState(false)
-	const displaySkillList = () => visible? setVisible(false) : setVisible(true)
+	const dispatch = useDispatch()
+	const visible = useSelector( state => state.tree.themes.collection[props.theme.index].openedList )
+	const displaySkillList = () => dispatch({ type: 'TOGGLE_THEMES_LIST_VISIBILITY', payload: props.theme.index })
 
 	const margin = (props.theme.skills.length * -208)
 

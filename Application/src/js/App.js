@@ -13,20 +13,22 @@ import Modale from './pages/Modale'
 import '../css/style.css'
 import img from '../images/background.jpg'
 import styled from 'styled-components'
+import { useDispatch, useSelector } from 'react-redux'
 
 
 const App = () => {
-	const [modale, setModale] = useState(null)
+	const dispatch = useDispatch()
+	const isModalShowing =  useSelector(state => state.tree.isModalShowing)
 
 	const clickOutsideModale = event => {
-		if (event.target.id === 'OutsideModale') setModale(null)
+		if (event.target.id === 'OutsideModale') dispatch({ type: 'TOGGLE_IS_MODAL_SHOWING' })
 	}
-
+	
     return (
         <Router>
         	<AppBody>
-	            <Header setModale={ setModale }/>
-	            { null !== modale && <Modale clickOutside={ clickOutsideModale } modale={ modale } setModale={ setModale } /> }
+	            <Header />
+	            { isModalShowing && <Modale clickOutside={ clickOutsideModale } /> }
 	            <div>
 	                <Switch>
 	                    <Route exact path="/">

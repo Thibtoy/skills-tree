@@ -12,7 +12,7 @@ const FarmerController = {
     authenticate: (req, res) => {
     	FarmerServices.authenticate(req.body)
     		.then(response => 
-                res.status(response.status).cookie('token', response.token, { maxAge: 900000, httpOnly: true }).send(true)
+                res.status(response.status).send(response.token)
             )
     		.catch( err => res.status(err.status).send(false));
     },
