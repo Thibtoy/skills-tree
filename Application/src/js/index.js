@@ -7,6 +7,7 @@ import configureStore from './store/store'
 const MOUNT_NODE = document.getElementById('app');
 
 const store = configureStore()
+store.dispatch({ type: 'INIT_APP' })
 
 ReactDOM.render(
 	<Provider store={ store }>

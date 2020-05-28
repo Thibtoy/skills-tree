@@ -18,8 +18,8 @@ const serverInitialisation = (server) => {
     server.use(morgan('tiny'))
     // Enable CORS
     server.use(function(req, res, next){
-        res.setHeader('Access-Control-Allow-origin', '*')
-        res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type, application/json')
+        res.setHeader('Access-Control-Allow-origin', 'http://localhost:1234')
+        res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type, application/json, Authorization')
         res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
         res.setHeader('Access-Control-Allow-Credentials', true)
         next()
